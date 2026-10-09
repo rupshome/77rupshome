@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ead2ca">
+<title>rup's home ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap');
+
+:root {
+  --bg: #ead2ca;
+  --pink: #d9a9a0;
+  --deep: #986b66;
+  --brown: #624640;
+  --cream: #fff0e9;
+  --border: #c69b90;
+  --shadow: rgba(111, 69, 61, .15);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; color: var(--brown);
+  font-family: 'Quicksand', sans-serif;
+  background: var(--bg);
+  background-image: radial-gradient(ellipse at 10% 10%, #f8e6df 0, transparent 35%),
+                    radial-gradient(ellipse at 90% 80%, #d9b7ad 0, transparent 40%);
+}
+button, input { font: inherit; }
+button { color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--deep); outline-offset: 3px; }
+.page { max-width: 1100px; margin: 24px auto; padding: 0 24px 45px; }
+.window {
+  overflow: visible; border: 1px solid var(--border); border-radius: 20px;
+  background: rgba(255, 244, 239, .34); box-shadow: 0 12px 35px var(--shadow);
+}
+.topbar { height: 40px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #cda69b; }
+.dots { display: flex; gap: 7px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: #d3a39a; border: 1px solid #b8877e; }
+.top-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--deep); }
+.hero { text-align: center; padding: 34px 15px 16px; }
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(43px, 8vw, 76px); font-style: italic; font-weight: 700; letter-spacing: -3px; margin: 0; color: #986c65; text-shadow: 1px 2px 0 #f9e5dc; }
+.subtitle { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 2px; margin-top: 12px; color: var(--deep); }
+.heart-line { margin-top: 13px; font-size: 22px; color: #a77770; }
+.profile { display: flex; align-items: center; gap: 14px; padding: 12px 24px 22px; flex-wrap: wrap; }
+.avatar { width: 76px; height: 76px; border: 3px solid #f8e5dc; outline: 1px solid var(--border); border-radius: 20px; background: rgba(255,241,235,.6); display: grid; place-items: center; overflow: hidden; color: var(--deep); font-size: 26px; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.profile-actions { display: flex; gap: 7px; align-items: center; }
+.soft-button { background: rgba(255,239,232,.72); border: 1px solid var(--border); border-radius: 12px; padding: 9px 13px; font-size: 12px; transition: .2s; }
+.soft-button:hover, .add-button:hover { background: #f8e2da; transform: translateY(-2px); }
+.profile-spacer { flex: 1; }
+.tiny-note { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--deep); }
+.section { padding: 0 24px 20px; }
+.banner { text-align: center; padding: 12px; margin: 0 auto 24px; max-width: 480px; border: 1px solid var(--border); border-radius: 30px; background: linear-gradient(110deg, #f8e7df, #e7c5bb); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 1px; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.add-button { border: 1px solid #b78077; border-radius: 12px; padding: 11px 16px; background: linear-gradient(135deg, #d7a29a, #e8bdb3); font-weight: 700; font-size: 13px; box-shadow: 0 3px 0 rgba(130,78,69,.12); transition: .2s; }
+.shortcut-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--deep); }
+.shortcut-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 16px; align-items: start; }
+.shortcut { min-width: 0; position: relative; border: 1px solid #c9a198; border-radius: 16px; padding: 15px 9px 12px; background: linear-gradient(145deg, #fae9e2, #efd6cd); box-shadow: 0 4px 9px rgba(112,70,62,.08); text-align: center; transition: transform .2s, box-shadow .2s; }
+.shortcut:hover { transform: translateY(-4px); box-shadow: 0 9px 16px rgba(112,70,62,.14); }
+.shortcut-link { display: flex; align-items: center; flex-direction: column; gap: 10px; color: inherit; text-decoration: none; min-width: 0; }
+.logo { width: 60px; height: 60px; display: grid; place-items: center; overflow: hidden; border-radius: 17px; border: 1px solid rgba(190,145,134,.4); background: #f5ded5; font-size: 30px; box-shadow: inset 0 1px 5px rgba(255,255,255,.6); }
+.logo img { width: 100%; height: 100%; object-fit: cover; }
+.shortcut-name { font-size: 12px; font-weight: 700; max-width: 100%; overflow-wrap: anywhere; }
+.menu-button { position: absolute; top: 5px; right: 5px; width: 28px; height: 28px; display: grid; place-items: center; border: none; border-radius: 9px; background: transparent; font-size: 20px; line-height: 1; }
+.menu-button:hover { background: #e8c6bc; }
+.menu { position: absolute; z-index: 5; right: 5px; top: 34px; width: 140px; padding: 5px; border: 1px solid var(--border); border-radius: 12px; background: #fff0e9; box-shadow: 0 8px 20px var(--shadow); }
+.menu button { display: block; width: 100%; padding: 9px 8px; text-align: left; font-size: 12px; border: none; border-radius: 8px; background: transparent; }
+.menu button:hover { background: #efd4ca; }
+.menu .delete { color: #a13f45; }
+.empty { grid-column: 1 / -1; text-align: center; padding: 38px 12px; border: 1px dashed var(--border); border-radius: 16px; background: rgba(255,241,235,.3); font-size: 13px; line-height: 2; }
+.footer { text-align: center; padding: 27px 10px 5px; font-size: 12px; color: #956d66; }
+.sparkle { position: fixed; z-index: -1; color: #b18178; font-size: 30px; opacity: .65; pointer-events: none; }
+.sparkle.one { top: 15%; left: 4%; } .sparkle.two { top: 38%; right: 5%; } .sparkle.three { bottom: 8%; left: 7%; } .sparkle.four { bottom: 14%; right: 7%; }
+.dialog-backdrop { position: fixed; inset: 0; z-index: 20; padding: 18px; display: grid; place-items: center; background: rgba(84,52,46,.35); backdrop-filter: blur(5px); }
+.dialog { width: min(100%, 390px); max-height: 90vh; overflow-y: auto; border: 1px solid var(--border); border-radius: 18px; background: #f9e7df; box-shadow: 0 15px 45px rgba(85,47,41,.2); }
+.dialog-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid #dfbdb3; font-family: 'DM Mono', monospace; font-size: 13px; }
+.close-button { border: none; background: transparent; font-size: 21px; }
+.dialog-body { padding: 18px; }
+.field { display: block; margin-bottom: 16px; font-size: 12px; font-weight: 700; }
+.field input { display: block; width: 100%; margin-top: 7px; padding: 12px; border: 1px solid #cfaaa0; border-radius: 10px; background: #fff3ed; color: var(--brown); font-size: 13px; }
+.preview-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.preview-logo { width: 62px; height: 62px; display: grid; place-items: center; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border); border-radius: 15px; background: #f2d8ce; font-size: 29px; }
+.preview-logo img { width: 100%; height: 100%; object-fit: cover; }
+.emoji-options { display: flex; flex-wrap: wrap; gap: 7px; margin: -5px 0 16px; }
+.emoji-options button { border: 1px solid #d0a79d; border-radius: 9px; padding: 6px; background: #f8e7df; font-size: 19px; }
+.emoji-options button:hover { background: #eac9bf; }
+.hint { margin: -7px 0 15px; font-size: 10px; line-height: 1.6; color: #956e66; }
+.dialog-actions { display: flex; gap: 9px; justify-content: flex-end; padding-top: 4px; }
+.hidden { display: none !important; }
+@media (max-width: 480px) {
+  .page { margin: 10px auto; padding: 0 10px 25px; }
+  .profile, .section { padding-left: 14px; padding-right: 14px; }
+  .shortcut-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+  .shortcut { padding: 15px 5px 11px; }
+  .logo { width: 49px; height: 49px; font-size: 25px; }
+  .shortcut-name { font-size: 11px; }
+  .top-note { font-size: 9px; }
+}
+</style>
+</head>
+<body>
+<div class="sparkle one">✧</div><div class="sparkle two">♡</div>
+<div class="sparkle three">☆</div><div class="sparkle four">✧</div>
+
+<main class="page">
+  <div class="window">
+    <div class="topbar">
+      <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="top-note">good things take time ♡</div>
+    </div>
+
+    <header class="hero">
+      <h1>rup's home</h1>
+      <div class="heart-line">━━ ♡ ━━</div>
+      <div class="subtitle">YOUR LITTLE CORNER OF THE INTERNET</div>
+    </header>
+
+    <section class="profile">
+      <div class="avatar" id="avatar"><span>♡</span></div>
+      <div class="profile-actions">
+        <button class="soft-button" id="changePhoto" type="button">♡ Change Photo</button>
+        <button class="soft-button" id="removePhoto" type="button" title="Remove photo">✕</button>
+        <input class="hidden" type="file" id="profileFile" accept="image/*">
+      </div>
+      <div class="profile-spacer"></div>
+      <div class="tiny-note">made with ♡ just for you</div>
+    </section>
+
+    <section class="section">
+      <div class="banner">✧ Small links · Big dreams ♡</div>
+      <div class="toolbar">
+        <button class="add-button" id="addButton" type="button">＋ Add a little link</button>
+        <span class="shortcut-count" id="shortcutCount"></span>
+      </div>
+      <div class="shortcut-grid" id="shortcutGrid"></div>
+      <div class="footer">✧ a little nostalgia, a little magic ✧<br><span style="font-family:'DM Mono',monospace;font-size:10px;">this is your space. make it yours.</span></div>
+    </section>
+  </div>
+</main>
+
+<div class="dialog-backdrop hidden" id="dialogBackdrop">
+  <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <div class="dialog-header">
+      <span id="dialogTitle">Add a little link ♡</span>
+      <button class="close-button" id="closeDialog" type="button" aria-label="Close">×</button>
+    </div>
+    <form class="dialog-body" id="linkForm">
+      <div class="preview-row">
+        <div class="preview-logo" id="previewLogo">♡</div>
+        <div>
+          <button type="button" class="soft-button" id="chooseLogo">Upload a logo</button>
+          <p class="hint" style="margin:7px 0 0;">Or pick a cute emoji below!</p>
+        </div>
+      </div>
+      <input class="hidden" type="file" id="logoFile" accept="image/*">
+      <div class="emoji-options" id="emojiOptions">
+        <button type="button">♡</button><button type="button">☆</button>
+        <button type="button">🎀</button><button type="button">🌷</button>
+        <button type="button">🦋</button><button type="button">☁️</button>
+        <button type="button">🎧</button><button type="button">📷</button>
+        <button type="button">🎮</button><button type="button">💿</button>
+        <button type="button">📚</button><button type="button">🌸</button>
+      </div>
+      <label class="field">Shortcut name
+        <input id="linkName" maxlength="40" placeholder="e.g. Pinterest" required>
+      </label>
+      <label class="field">Website URL
+        <input id="linkUrl" type="text" placeholder="https://www.example.com" required>
+      </label>
+      <p class="hint">Tip: use the complete website address, including https://.</p>
+      <div class="dialog-actions">
+        <button type="button" class="soft-button" id="cancelDialog">Cancel</button>
+        <button type="submit" class="add-button">Save ♡</button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = (selector) => document.querySelector(selector);
+  const grid = $("#shortcutGrid");
+  const backdrop = $("#dialogBackdrop");
+  const form = $("#linkForm");
+  const STORAGE_KEY = "rups-home-shortcuts-v2";
+  const PROFILE_KEY = "rups-home-profile-v2";
+
+  let links = [];
+  let profileImage = "";
+  let editingId = null;
+  let openMenuId = null;
+  let draftIcon = "♡";
+  let draftImage = "";
+
+  const starterLinks = [
+    { id: "youtube", name: "YouTube", url: "https://www.youtube.com/", icon: "▶️", image: "" },
+    { id: "pinterest", name: "Pinterest", url: "https://www.pinterest.com/", icon: "📌", image: "" },
+    { id: "spotify", name: "Spotify", url: "https://open.spotify.com/", icon: "🎧", image: "" },
+    { id: "google", name: "Google", url: "https://www.google.com/", icon: "🌐", image: "" },
+    { id: "instagram", name: "Instagram", url: "https://www.instagram.com/", icon: "📷", image: "" },
+    { id: "github", name: "GitHub", url: "https://github.com/", icon: "💻", image: "" }
+  ];
+
+  function saveData() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
+      return true;
+    } catch (error) {
+      alert("Your browser storage may be full. Try using smaller pictures or removing unused shortcuts.");
+      return false;
+    }
+  }
+
+  function loadData() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const parsed = saved ? JSON.parse(saved) : null;
+      links = Array.isArray(parsed) ? parsed : starterLinks.map(item => ({ ...item }));
+    } catch {
+      links = starterLinks.map(item => ({ ...item }));
+    }
+
+    try { profileImage = localStorage.getItem(PROFILE_KEY) || ""; }
+    catch { profileImage = ""; }
+
+    renderProfile();
+    renderLinks();
+  }
+
+  function renderProfile() {
+    const avatar = $("#avatar");
+    avatar.replaceChildren();
+    if (profileImage) {
+      const img = document.createElement("img");
+      img.src = profileImage;
+      img.alt = "Profile photo";
+      avatar.append(img);
+    } else {
+      const heart = document.createElement("span");
+      heart.textContent = "♡";
+      avatar.append(heart);
+    }
+  }
+
+  function renderLogo(container, link) {
+    container.replaceChildren();
+    if (link.image) {
+      const img = document.createElement("img");
+      img.src = link.image;
+      img.alt = "";
+      container.append(img);
+    } else {
+      container.textContent = link.icon || "♡";
+    }
+  }
+
+  function makeMenuButton(text, className, action) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = text;
+    if (className) button.className = className;
+    button.addEventListener("click", action);
+    return button;
+  }
+
+  function renderLinks() {
+    grid.replaceChildren();
+    $("#shortcutCount").textContent = `${links.length} little ${links.length === 1 ? "link" : "links"} ♡`;
+
+    if (!links.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "It's a little empty here ♡ Add your first link!";
+      grid.append(empty);
+      return;
+    }
+
+    links.forEach((link) => {
+      const tile = document.createElement("article");
+      tile.className = "shortcut";
+
+      const anchor = document.createElement("a");
+      anchor.className = "shortcut-link";
+      anchor.href = link.url;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      anchor.title = `Open ${link.name}`;
+
+      const logo = document.createElement("div");
+      logo.className = "logo";
+      renderLogo(logo, link);
+
+      const name = document.createElement("span");
+      name.className = "shortcut-name";
+      name.textContent = link.name;
+      anchor.append(logo, name);
+
+      const menuButton = makeMenuButton("⋮", "menu-button", (event) => {
+        openMenuId = openMenuId === link.id ? null : link.id;
+        renderLinks();
+      });
+      menuButton.setAttribute("aria-label", `Options for ${link.name}`);
+      menuButton.setAttribute("aria-expanded", String(openMenuId === link.id));
+      tile.append(anchor, menuButton);
+
+      if (openMenuId === link.id) {
+        const menu = document.createElement("div");
+        menu.className = "menu";
+        menu.append(
+          makeMenuButton("↗  Open link", "", () => window.open(link.url, "_blank", "noopener,noreferrer")),
+          makeMenuButton("✎  Edit", "", () => openEditor(link.id)),
+          makeMenuButton("♡  Change logo", "", () => {
+            openEditor(link.id);
+            $("#logoFile").click();
+          }),
+          makeMenuButton("✕  Delete", "delete", () => deleteLink(link.id))
+        );
+        tile.append(menu);
+      }
+      grid.append(tile);
+    });
+  }
+
+  function openEditor(id = null) {
+    editingId = id;
+    openMenuId = null;
+    const link = links.find(item => item.id === id);
+
+    $("#dialogTitle").textContent = link ? "Edit your link ♡" : "Add a little link ♡";
+    $("#linkName").value = link ? link.name : "";
+    $("#linkUrl").value = link ? link.url : "";
+    draftIcon = link ? (link.icon || "♡") : "♡";
+    draftImage = link ? (link.image || "") : "";
+    updatePreview();
+    $("#logoFile").value = "";
+    backdrop.classList.remove("hidden");
+    renderLinks();
+    $("#linkName").focus();
+  }
+
+  function closeEditor() {
+    backdrop.classList.add("hidden");
+    editingId = null;
+    draftImage = "";
+    $("#logoFile").value = "";
+  }
+
+  function updatePreview() {
+    const preview = $("#previewLogo");
+    preview.replaceChildren();
+    if (draftImage) {
+      const img = document.createElement("img");
+      img.src = draftImage;
+      img.alt = "Logo preview";
+      preview.append(img);
+    } else {
+      preview.textContent = draftIcon;
+    }
+  }
+
+  function validUrl(value) {
+    try {
+      const parsed = new URL(value);
+      return parsed.protocol === "https:" || parsed.protocol === "http:";
+    } catch {
+      return false;
+    }
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = $("#linkName").value.trim();
+    let url = $("#linkUrl").value.trim();
+    if (!/^https?:\/\//i.test(url)) url = "https://" + url;
+
+    if (!name) return alert("Please give your shortcut a name ♡");
+    if (!validUrl(url)) return alert("Please enter a valid website address.");
+
+    const previous = links.map(item => ({ ...item }));
+    if (editingId) {
+      const link = links.find(item => item.id === editingId);
+      if (!link) return;
+      link.name = name;
+      link.url = url;
+      link.icon = draftIcon;
+      link.image = draftImage;
+    } else {
+      const id = (window.crypto && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      links.push({ id, name, url, icon: draftIcon, image: draftImage });
+    }
+
+    if (saveData()) {
+      closeEditor();
+      renderLinks();
+    } else {
+      links = previous;
+      renderLinks();
+    }
+  });
+
+  function deleteLink(id) {
+    const link = links.find(item => item.id === id);
+    if (!link || !confirm(`Delete "${link.name}" from your home page?`)) return;
+    const previous = links;
+    links = links.filter(item => item.id !== id);
+    openMenuId = null;
+    if (saveData()) renderLinks();
+    else { links = previous; renderLinks(); }
+  }
+
+  function readImage(file, callback) {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      alert("Please choose an image file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onerror = () => alert("Could not read that image.");
+    reader.onload = () => {
+      const img = new Image();
+      img.onerror = () => alert("This image could not be opened.");
+      img.onload = () => {
+        const maxSize = 500;
+        const scale = Math.min(1, maxSize / Math.max(img.width, img.height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(img.width * scale));
+        canvas.height = Math.max(1, Math.round(img.height * scale));
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        callback(canvas.toDataURL("image/jpeg", 0.78));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  $("#changePhoto").addEventListener("click", () => $("#profileFile").click());
+  $("#profileFile").addEventListener("change", (event) => {
+    readImage(event.target.files[0], (data) => {
+      try {
+        localStorage.setItem(PROFILE_KEY, data);
+        profileImage = data;
+        renderProfile();
+      } catch {
+        alert("The photo could not be saved. Try a smaller image.");
+      }
+      event.target.value = "";
+    });
+  });
+
+  $("#removePhoto").addEventListener("click", () => {
+    profileImage = "";
+    try { localStorage.removeItem(PROFILE_KEY); } catch {}
+    renderProfile();
+  });
+
+  $("#addButton").addEventListener("click", () => openEditor());
+  $("#chooseLogo").addEventListener("click", () => $("#logoFile").click());
+  $("#logoFile").addEventListener("change", (event) => {
+    readImage(event.target.files[0], (data) => {
+      draftImage = data;
+      updatePreview();
+      event.target.value = "";
+    });
+  });
+
+  $("#emojiOptions").addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    draftIcon = button.textContent;
+    draftImage = "";
+    updatePreview();
+  });
+
+  $("#closeDialog").addEventListener("click", closeEditor);
+  $("#cancelDialog").addEventListener("click", closeEditor);
+  backdrop.addEventListener("click", (event) => {
+    if (event.target === backdrop) closeEditor();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (openMenuId && !event.target.closest(".shortcut")) {
+      openMenuId = null;
+      renderLinks();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeEditor();
+      openMenuId = null;
+      renderLinks();
+    }
+  });
+
+  loadData();
+})();
+</script>
+</body>
+</html>
